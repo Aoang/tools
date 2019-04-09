@@ -1,59 +1,118 @@
-<!doctype html>
-<html>
-<head>
-<meta name="renderer" content="webkit">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="renderer" content="webkit">
-<meta charset="utf-8">
-<title>Tools - Browser information</title>
-</head>
-
-<body>
-<script src="browser.js"></script>
-<script>
-document.writeln("userAgent: " + navigator.userAgent);
-document.writeln("<br>");
-// 系统
-if (browser.Android){
-	document.writeln("Operating system: " + "Android " + browser.Android);
-} else if (browser.Macintosh){
-	document.writeln("Operating system: " + "OS X " + browser.Macintosh);
-} else if (browser.IOS){
-	document.writeln("Operating system: " + "iOS " + browser.IOS);
-} else if (browser.iPad){
-	document.writeln("Operating system: " + "iPad " + browser.iPad);
-} else if (browser.iPhone){
-	document.writeln("Operating system: " + "iPhone " + browser.iPhone);
-} else if (browser.iPod){
-	document.writeln("Operating system: " + "iPod " + browser.iPod);
-} else if (browser.Windows){
-	document.writeln("Operating system: " + "Windows " + browser.Windows);
-} else {
-	document.writeln("Operating system: " + "未知");
-}
-document.writeln("<br>");
-
-// 语言
-document.writeln("Languages: " + browser.languages);
-document.writeln("<br>");
-
-// 游览器信号
-if (browser.Chrome){
-	document.writeln("Browser: " + "Chrome " + browser.Chrome + " (Webkit " + browser.Webkit + ")");
-} else if (browser.Edge){
-	document.writeln("Browser: " + "Edge " + browser.Edge);
-} else if (browser.Gecko){
-	document.writeln("Browser: " + "Firefox " + browser.Gecko);
-} else if (browser.MSIE){
-	document.writeln("Browser: " + "IE " + browser.MSIE + browser.rv);
-} else if (browser.Opera){
-	document.writeln("Browser: " + "Opera " + browser.Opera);
-} else if (browser.Safari){
-	document.writeln("Browser: " + "Safari " + browser.Safari + " (Webkit " + browser.Webkit + ")");
-} else if (browser.Edge){
-	document.writeln("Browser: " + "Edge " + browser.Edge);
-}
-
-</script>
-</body>
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<title>Tools - Browser information</title>
+		<script src="browser.js"></script>
+		<style>
+			a{
+				text-decoration: none;
+    			color: #757575;
+			}
+			a:hover{
+				text-decoration: underline;
+			}
+			.wrapper{
+				width: 100%;
+				max-width: 960px;
+				margin: 0 auto;
+			}
+			.container{
+				margin-bottom: 20px;
+			}
+			.footer{
+				line-height: 40px;
+				text-align: right;
+			}
+			.footer a{
+				margin: 0 5px;
+			}
+			.module table{
+				width: 100%;
+				table-layout: fixed;
+				border-collapse: collapse;
+    			border-spacing: 0;
+				text-align: center;
+			}
+			.module thead{
+				background: #eee;
+			}
+			.module th,.module td{
+				padding: 8px 5px;
+				line-height: 24px;
+				border: 1px solid #eee;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="container">
+				<div class="module">
+					<script>
+						var info = new Browser();
+						if(info.device!='Mobile'){
+							document.writeln('<table>\
+								<caption><p>'+navigator.userAgent+'</p></caption>\
+								<thead>\
+									<tr>\
+										<th>浏览器</th>\
+										<th>版本</th>\
+										<th>内核</th>\
+										<th>操作系统</th>\
+										<th>设备</th>\
+										<th>语言</th>\
+									</tr>\
+								</thead>\
+								<tbody>\
+									<tr>\
+										<td>'+info.browser+'</td>\
+										<td>'+info.version+'</td>\
+										<td>'+info.engine+'</td>\
+										<td>'+info.os+' '+info.osVersion+'</td>\
+										<td>'+info.device+'</td>\
+										<td>'+info.language+'</td>\
+									</tr>\
+								</tbody>\
+							</table>');
+						}else{
+							document.writeln('<table>\
+								<caption><p>'+navigator.userAgent+'</p></caption>\
+								<thead>\
+									<tr>\
+										<th>浏览器</th>\
+										<th>版本</th>\
+										<th>内核</th>\
+									</tr>\
+								</thead>\
+								<tbody>\
+									<tr>\
+										<td>'+info.browser+'</td>\
+										<td>'+info.version+'</td>\
+										<td>'+info.engine+'</td>\
+									</tr>\
+								</tbody>\
+							</table>');
+							document.writeln('<table>\
+								<thead>\
+									<tr>\
+										<th>操作系统</th>\
+										<th>设备</th>\
+										<th>语言</th>\
+									</tr>\
+								</thead>\
+								<tbody>\
+									<tr>\
+										<td>'+info.os+' '+info.osVersion+'</td>\
+										<td>'+info.device+'</td>\
+										<td>'+info.language+'</td>\
+									</tr>\
+								</tbody>\
+							</table>');
+						}
+					</script>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
