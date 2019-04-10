@@ -351,7 +351,7 @@
             }
         }
         //修正
-        if (_this.browser == 'Edge' && parseInt(_this.version) < 73)) {
+        if (_this.browser == 'Edge' && parseInt(_this.version) < 73) {
             _this.engine = 'EdgeHTML';
         } else if (_this.browser == 'Chrome' && parseInt(_this.version) > 27) {
             _this.engine = 'Blink';
