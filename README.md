@@ -5,6 +5,6 @@
 * [Date Calculator](./date-calculator/)
 * [Browser Info](./browser/)
 
-# Documents
+# documents
 
 * [计算机常用单词](./doc/program/)
